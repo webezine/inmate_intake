@@ -10,8 +10,8 @@ import { SharedModule } from 'shared/shared.module';
 
 // Components
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { EditComponent } from './inmate/edit/edit.component';
-import { LocationHistoryComponent } from './inmate/location-history/location-history.component';
+import { EditComponent } from './inmate/components/edit/edit.component';
+import { LocationHistoryComponent } from './inmate/components/location-history/location-history.component';
 
 @NgModule({
   declarations: [
