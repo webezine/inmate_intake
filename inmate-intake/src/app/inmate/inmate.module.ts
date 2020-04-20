@@ -13,7 +13,7 @@ import { InmateRoutingModule } from './inmate-routing.module';
 import { InmateResolver } from './inmate.resolver';
 
 // Components
-import { EditComponent, LocationHistoryComponent } from './components/components;;
+import { EditComponent, LocationHistoryComponent } from './components';
 
 @NgModule({
   declarations: [EditComponent, LocationHistoryComponent],
