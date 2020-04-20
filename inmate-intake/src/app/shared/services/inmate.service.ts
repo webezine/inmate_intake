@@ -9,7 +9,7 @@ import { EnvironmentService } from 'core/services';
 
 @Injectable()
 export class InmateService extends BaseService {
-  private inmatesUrl = '';
+  private inmatesUrl = `${this.environmentService.apiUrl}/inmates`;
 
   constructor(
     private http: HttpClient,
