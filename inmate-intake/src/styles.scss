@@ -5,8 +5,7 @@
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 
-html,
-body {
+html, body {
   height: 100%;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -25,3 +24,8 @@ body {
 .hand {
   cursor: pointer;
 }
+
+.p-15 { padding: 15px;}
+.p-l-15 { padding-left:15px;}
+
+.m-l-15 { margin-left:15px; }

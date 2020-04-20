@@ -1,5 +1,7 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 // Modules
 import { AppComponent } from './app.component';
@@ -10,20 +12,18 @@ import { SharedModule } from 'shared/shared.module';
 
 // Components
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { EditComponent } from './inmate/components/edit/edit.component';
-import { LocationHistoryComponent } from './inmate/components/location-history/location-history.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    EditComponent,
-    LocationHistoryComponent
+    DashboardComponent
   ],
   imports: [
     AppRoutingModule,
+    BrowserAnimationsModule,
     BrowserModule,
     CoreModule,
+    HttpClientModule,
     NgMaterialModule,
     SharedModule
   ],
