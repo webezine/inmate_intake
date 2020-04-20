@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NgMaterialModule }  from './shared/ng-material.module';
 import { SharedModule } from 'shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EditComponent } from './inmate/edit/edit.component';
 
 @NgModule({
   declarations: [
