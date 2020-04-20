@@ -5,10 +5,13 @@ import { RouterModule } from '@angular/router';
 
 import { EnvironmentService } from './services';
 import { NgMaterialModule } from 'shared/ng-material.module';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
+  declarations: [NavBarComponent],
   imports: [CommonModule, RouterModule, NgMaterialModule, ReactiveFormsModule],
   providers: [EnvironmentService],
+  exports: [NavBarComponent]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
