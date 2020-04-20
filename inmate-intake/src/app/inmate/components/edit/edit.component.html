@@ -1,1 +1,89 @@
-<p>edit works!</p>
+<form [formGroup]="form" (ngSubmit)="saveChanges(form.value)">
+  <div class="row my-2">
+    <div class="col">
+      <button mat-button routerLink="../../" color="primary">
+        <i class="fas fa-chevron-left pr-1"></i>Back
+      </button>
+    </div>
+    <div class="col">
+      <button type="submit" mat-stroked-button color="primary" class="float-right">
+        <i class="fas fa-check pr-1"></i>Save</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-1">
+            <div class="col">
+              <h4 class="purple">
+                <i class="fas fa-address-card pr-2"></i>
+                <span *ngIf="inmate.id; else addTitle">Edit Inmate</span>
+                <ng-template #addTitle>Add Inmate</ng-template>
+              </h4>
+            </div>
+            <div class="col-2">
+              <mat-slide-toggle formControlName="isActive" class="float-right" color="primary">Active</mat-slide-toggle>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+
+              <div class="row">
+                <div class="col">
+                  <mat-form-field>
+                    <input matInput #firstNames autocomplete="off" formControlName="firstNames" placeholder="First Names" required />
+                    <mat-hint align="end">{{firstNames.value.length}} / 250</mat-hint>
+                    <mat-error *ngIf="form.controls['firstNames'].invalid">{{getErrorMessage('firstNames')}}</mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col">
+                  <mat-form-field>
+                    <input matInput #lastName autocomplete="off" formControlName="lastName" placeholder="Last Name" required />
+                    <mat-hint align="end">{{lastName.value.length}} / 250</mat-hint>
+                    <mat-error *ngIf="form.controls['lastName'].invalid">{{getErrorMessage('lastName')}}</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row mt-2">
+                <div class="col">
+                  <mat-form-field>
+                    <input matInput autocomplete="off" formControlName="dob" [matDatepicker]="picker" placeholder="Date of Birth"
+                      (dateInput)="formatAge($event)" (dateChange)="formatAge($event)">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-hint class="text-muted" *ngIf="age && age !== 'NaN'">{{age}} Years</mat-hint>
+                    <mat-error *ngIf="form.controls['dob'].invalid">{{getErrorMessage('dob')}}</mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col">
+                  <mat-form-field>
+                    <mat-label>Cell Number</mat-label>
+                    <input matInput type="number" autocomplete="off" formControlName="cellNumber" placeholder="{{cellNumberMin}} - {{cellNumberMax}}" required />
+                    <mat-error *ngIf="form.controls['cellNumber'].invalid">{{getErrorMessage('cellNumber')}}</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row mt-2">
+                <div class="col">
+                  <mat-form-field>
+                    <input matInput [ngxMatDatetimePicker]="intakePicker" placeholder="Intake Date" formControlName="intakeDate"
+                      [min]="intakeMin" [max]="intakeMax" autocomplete="off" required>
+                    <mat-datepicker-toggle matSuffix [for]="intakePicker"></mat-datepicker-toggle>
+                    <ngx-mat-datetime-picker #intakePicker></ngx-mat-datetime-picker>
+                    <mat-error *ngIf="form.controls['intakeDate'].invalid">{{getErrorMessage('intakeDate')}}</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
