@@ -8,24 +8,14 @@
 html, body {
   height: 100%;
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
 }
 
 /* Mat forms */
-.mat-form-field {
-  font-size: 14px;
-  width: 100%;
-}
+.mat-form-field { font-size: 14px;  width: 100%;}
+.hand { cursor: pointer;}
 
-.mat-row:hover {
-  background-color: rgb(226, 235, 238);
-}
-
-.hand {
-  cursor: pointer;
-}
-
+/* Spacing */
 .p-15 { padding: 15px;}
 .p-l-15 { padding-left:15px;}
-
 .m-l-15 { margin-left:15px; }
