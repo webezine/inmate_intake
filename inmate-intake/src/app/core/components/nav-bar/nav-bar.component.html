@@ -3,8 +3,8 @@
 
 
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="float-right" href="#" (click)="logout()">Logout</a>
+      <li class="nav-item active" *ngIf="this.authService.isAuthenticated()">
+        <a class="float-right" href="#" (click)="logout()">Sign out</a>
       </li>
     </ul>
 </nav>
