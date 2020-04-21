@@ -1,1 +1,90 @@
-<p>dashboard works!</p>
+<div class="row">
+  <div class="col-6">
+    <h2 class="mt-2">Inmate Records</h2>
+  </div>
+  <div class="col-6">
+    <button mat-stroked-button color="primary" class="float-right mt-2" routerLink="/inmates/new"><i class="fas fa-plus pr-1"></i>Add</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-6">
+    <mat-form-field>
+      <input matInput [(ngModel)]="listFilter" placeholder="Search" autocomplete="off">
+      <button mat-button *ngIf="listFilter" matSuffix mat-icon-button aria-label="Clear" (click)="listFilter=''">
+        <i class="fas fa-times text-muted"></i>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="col-6">
+    <mat-checkbox  [(ngModel)]='includeInactive' color="primary" class="pt-2 float-right">Active records only</mat-checkbox>
+
+  </div>
+</div>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort matSortActive="lastName" matSortDirection="asc"
+   matSortDisableClear>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef >
+        <span mat-sort-header="firstNames">First Name</span>
+        <span mat-sort-header="lastName">Last Name</span>
+      </th>
+      <td mat-cell *matCellDef="let inmate" class="hand" [routerLink]="['/inmates', inmate.id]">
+        <span class="block">{{inmate.firstNames}}</span>
+        <span class="block">{{inmate.lastName}}</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="dob">DOB</th>
+      <td mat-cell *matCellDef="let inmate" class="hand" [routerLink]="['/inmates', inmate.id]">
+        <span>{{inmate.dob }}</span>
+        <small class="db text-muted pl-2">{{ inmate.dob }} years</small>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="intakeDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="intakeDate">Intake</th>
+      <td mat-cell *matCellDef="let inmate" class="hand" [routerLink]="['/inmates', inmate.id]">
+        <span> {{inmate.intakeDate }}</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cellNumber">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="cellNumber">Cell #</th>
+      <td mat-cell *matCellDef="let inmate" class="hand" [routerLink]="['/inmates', inmate.id]">
+        <span class="pl-1">{{inmate.cellNumber}}</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="isActive">Status</th>
+      <td mat-cell *matCellDef="let inmate" class="hand" [routerLink]="['/inmates', inmate.id]">
+        <span class="pl-1" *ngIf="inmate.isActive">
+          <i class="fas fa-check green"></i>
+        </span>
+        <span class="pl-1" *ngIf="!inmate.isActive">
+          <i class="fas fa-times red"></i>
+        </span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="locations">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="locations"></th>
+      <td mat-cell *matCellDef="let inmate" class="hand" (click)="openLocationHistoryDialog(inmate)">
+        <i class="fas fa-search-location p-2" *ngIf="getActiveLocationHistory(inmate).length > 0" matTooltip="Click to view location history"></i>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let inmate; columns: displayedColumns;">
+    </tr>
+  </table>
+
+  <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+
+  <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+</div>
