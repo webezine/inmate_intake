@@ -1,27 +1,14 @@
 # InmateIntake
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
 
-## Development server
+## Getting started
+Running 'npm install' will install the project dependencies. This is the first thing you need to do ( assuming Angular Cli , devkit & builder are already isntalled on your machine).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+I have created some custom npm scripts which will spin up a mock json server & the angular server.
+I am using a package called concurrently to acheive this.
 
-## Code scaffolding
+To execute please use 'npm start'.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Admin Access
+A basic login page has been put together and using the json server a good response is returned for any request whihc hits the auth endpoint. You can see this in the middleware-authentication.js file.
