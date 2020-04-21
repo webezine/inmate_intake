@@ -6,9 +6,10 @@ import { RouterModule } from '@angular/router';
 import { EnvironmentService, AuthService } from './services';
 import { NgMaterialModule } from 'shared/ng-material.module';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
-  declarations: [NavBarComponent],
+  declarations: [NavBarComponent, LoginComponent],
   imports: [CommonModule, RouterModule, NgMaterialModule, ReactiveFormsModule],
   providers: [EnvironmentService, AuthService],
   exports: [NavBarComponent]

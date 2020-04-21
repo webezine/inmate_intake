@@ -38,6 +38,5 @@ export class AuthGuard implements CanActivate, CanLoad {
 
   private navigateToLogin(path: string) {
     this.router.navigate(['/login'], { queryParams: { returnUrl: path } });
-    // ToDo  - implement login page
   }
 }

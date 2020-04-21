@@ -1,0 +1,63 @@
+<form [formGroup]="form">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-1">
+            <div class="col">
+              <h4>Sign In...</h4>
+            </div>
+          </div>
+          <div class="row mb-1">
+            <div class="col">
+              <p>Please enter your e-mail address &amp; password in order to access the Inmate Intake system.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+
+              <div class="row mt-2">
+                <div class="col">
+                  <mat-form-field>
+                    <input class="ac" matInput formControlName="username" autocomplete="off" placeholder="Email Address" required />
+                    <mat-error *ngIf="form.controls['username'].invalid">{{getErrorMessage('username')}}</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row mt-2">
+                <div class="col">
+                  <mat-form-field>
+                    <input class="ac" matInput type="password" autocomplete="off" formControlName="password" placeholder="Password" required />
+                    <mat-error *ngIf="form.controls['password'].invalid">{{getErrorMessage('password')}}</mat-error>
+                  </mat-form-field>
+                  <i (click)="submitForm(form.value)" class="fr fas fa-arrow-right pointer"></i>
+                </div>
+              </div>
+
+              <div class="row mt-2">
+                <div class="col">
+                  <small class="tac">By signing in you acknowledge your acceptance of the Privacy Policy, Website Terms of Use and Legal Restrictions.</small>
+                </div>
+              </div>
+
+              <div *ngIf="loginError" class="alert alert-danger mt-3" role="alert">
+                <div class="vertical-align">
+                    <div class="col-1 ib">
+                        <i class="fa fa-exclamation-triangle fa-2x"></i>
+                    </div>
+                    <div class="col-xs-11 ib">
+                      Unable to sign in at this time. Please check your email address and password and try again.
+                    </div>
+                </div>
+            </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+
