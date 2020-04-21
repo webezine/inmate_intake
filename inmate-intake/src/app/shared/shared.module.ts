@@ -5,12 +5,14 @@ import { DialogService } from './services';
 import { NgMaterialModule } from './ng-material.module'
 
 import { LocationHistoryDialogComponent } from './components/location-history-dialog/location-history-dialog.component';
+import { AgePipe } from './pipes/age.pipe';
 
 @NgModule({
   imports: [CommonModule,  NgMaterialModule ],
   providers: [InmateService, DialogService ],
-  declarations: [ LocationHistoryDialogComponent],
-  entryComponents: [ LocationHistoryDialogComponent ]
+  declarations: [ LocationHistoryDialogComponent, AgePipe],
+  entryComponents: [ LocationHistoryDialogComponent ],
+  exports: [AgePipe]
 })
 
 export class SharedModule { }
