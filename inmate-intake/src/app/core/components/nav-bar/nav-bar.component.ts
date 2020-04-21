@@ -10,7 +10,7 @@ import { AuthService } from 'core/services';
 export class NavBarComponent {
 
   constructor(
-    private authService: AuthService
+    public authService: AuthService
   ) { }
 
   logout() {
