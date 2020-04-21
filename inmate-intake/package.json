@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "concurrently --kill-others  \"npm run mock:server\" \"ng serve\"",
+    "mock:server": "json-server --watch MockData/inmates.json --port 3388 --middlewares middleware-authentication.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
