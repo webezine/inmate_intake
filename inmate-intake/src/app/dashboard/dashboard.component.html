@@ -40,15 +40,16 @@
     <ng-container matColumnDef="age">
       <th mat-header-cell *matHeaderCellDef mat-sort-header="dob">DOB</th>
       <td mat-cell *matCellDef="let inmate" class="hand" [routerLink]="['/inmates', inmate.id]">
-        <span>{{inmate.dob }}</span>
-        <small class="db text-muted pl-2">{{ inmate.dob }} years</small>
+        <span class="block">{{inmate.dob }}</span>
+        <small class="block text-muted pl-2">{{ inmate.dob | dobToAge }} years</small>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="intakeDate">
       <th mat-header-cell *matHeaderCellDef mat-sort-header="intakeDate">Intake</th>
       <td mat-cell *matCellDef="let inmate" class="hand" [routerLink]="['/inmates', inmate.id]">
-        <span> {{inmate.intakeDate }}</span>
+        <span class="block">{{ inmate.intakeDate | date: 'EEEE dd MMM yyyy'}}</span>
+        <span class="block">{{ inmate.intakeDate | date: 'HH:mm '}}</span>
       </td>
     </ng-container>
 
